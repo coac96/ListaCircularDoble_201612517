@@ -72,7 +72,7 @@ public class ListaCircularDobleEjemplo_201612517 {
        ref_Anterior = ultimo; 
         if(primero != null){
             do{
-                if(primero.objeto.id == id){
+                if(buscador.objeto.id == id){
                 if(buscador == primero){
                     primero = primero.siguiente;
                     ultimo.siguiente = primero;
@@ -83,14 +83,14 @@ public class ListaCircularDobleEjemplo_201612517 {
                     primero.atras = ultimo;
                     ultimo.siguiente = primero;
                 }else{
-                    
                     // 3 <- 7 - 8 -> 3 ->7
                     ref_Anterior.siguiente = buscador.siguiente;
                     buscador.siguiente.atras = ref_Anterior;
                 }
-               ref_Anterior = buscador;
-               buscador = buscador.siguiente;
+
                 }
+                ref_Anterior = buscador;
+               buscador = buscador.siguiente;
             }while(buscador != primero);
         }
     }
