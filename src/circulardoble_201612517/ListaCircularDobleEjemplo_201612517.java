@@ -67,16 +67,32 @@ public class ListaCircularDobleEjemplo_201612517 {
     
     public void eliminar(int id){
        Nodo buscador;
-        buscador = primero;
+       Nodo ref_Anterior;
+       buscador = primero;
+       ref_Anterior = ultimo; 
         if(primero != null){
             do{
-                if(buscador.objeto.id == id){
-                    buscador.siguiente = buscador.atras;
+                if(primero.objeto.id == id){
+                if(buscador == primero){
+                    primero = primero.siguiente;
+                    ultimo.siguiente = primero;
+                    primero.atras = ultimo;
+                }
+                if(buscador == ultimo){
+                    ultimo = ref_Anterior;
+                    primero.atras = ultimo;
+                    ultimo.siguiente = primero;
+                }else{
                     
+                    // 3 <- 7 - 8 -> 3 ->7
+                    ref_Anterior.siguiente = buscador.siguiente;
+                    buscador.siguiente.atras = ref_Anterior;
+                }
+               ref_Anterior = buscador;
+               buscador = buscador.siguiente;
                 }
             }while(buscador != primero);
         }
-        
     }
     
     
